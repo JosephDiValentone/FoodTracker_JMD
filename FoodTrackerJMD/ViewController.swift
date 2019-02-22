@@ -14,8 +14,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var mealNameLabel: UILabel!
-    
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var ratingControl: RatingControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,6 +46,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
                 fatalError("expected a dict but was provided the following: \(info)")
         }
         photoImageView.image = selectedImage
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -53,16 +55,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         nameTextField.resignFirstResponder()
         //lets user pick pic
+        
         let imagePickerController = UIImagePickerController()
+        
         //only photos picked
         imagePickerController.sourceType = .photoLibrary
+        
         // Veiw controller is notified
         imagePickerController.delegate = self
         present(imagePickerController,animated: true, completion: nil)
+        print("many things happen")
         
     }
-    @IBAction func setDefaultLabelText(_ sender: UIButton) {
-        mealNameLabel.text = "Default Text"
-    }
+   
 }
 
